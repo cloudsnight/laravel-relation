@@ -15,4 +15,9 @@ class User extends Model
     {
         return $this->hasMany('App\Models\Forum');
     }
+
+    public function lessons()
+    {
+        return $this->belongsToMany('App\Models\Lesson');
+    }
 }
