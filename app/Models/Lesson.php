@@ -8,6 +8,10 @@ class Lesson extends Model
 {
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+      //  WithPivot() untuk mengambil kolom lain; ex: ...->withPivot('a','b','c',...);
+      // WherePivot() untuk mem-Filter data dari suatu kolom pivot; ex: ...->wherePivot('nama_kolom','kriteria');
+      // WherePivotIn() untuk mem-Filter data dalam pivot kolom dengan banyak kriteria; ex: ...->withPivotIn('nama_kolom',['kriteria_1', 'kriteria_2','...']);
+        return $this->belongsToMany('App\Models\User')->withTimeStamps()
+                    ->withPivot('data_lain');
     }
 }
