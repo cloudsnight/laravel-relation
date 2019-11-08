@@ -8,6 +8,11 @@ class User extends Model
 {
     public function passport()
     {
-        return $this->hasOne('App\Models\passport');
+        return $this->hasOne('App\Models\Passport');
+    }
+
+    public function forums()
+    {
+        return $this->hasMany('App\Models\Forum');
     }
 }
