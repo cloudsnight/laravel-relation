@@ -12,7 +12,23 @@ class UserController extends Controller
 {
     public function showProfile($id)
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        // Eager loading untuk menghemat eksekusi pemanggilan query
+        // Menggunakan with()->...
+
+        // $user = User::with('forums')->where('id', $id)->first();
+
+        // Eager loading dengan syarat tertentu :
+         //   $user = User::with(['forums' => function($query){
+         //       $query->where('title', 'like', '%banten%');
+         //   }])->where('id', $id)->first();
+
+         // Eager loading dengan tabel lebih dari satu :
+         // $user = User::with('forums', 'lessons')->where('id', $id)->first();
+
+         // Nested eager loading :
+         $user = User::with('forums.tags')->where('id', $id)->first();
+      
+         return view('user.profile', ['user' => $user]);
     }
 
     public function showPassport($id)
