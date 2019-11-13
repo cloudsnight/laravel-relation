@@ -16,4 +16,5 @@ class Tag extends Model
     {
         return $this->MorphByMany('App\Models\Forum', 'taggable');
     }
+    
 }
