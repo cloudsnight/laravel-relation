@@ -12,3 +12,10 @@
   @endforeach
 </ul>
 <h3>Jumlah Like : {{ $lesson->likes->count() }}</h3>
+
+<h2>Daftar Tag</h2>
+<ul>
+  @foreach($lesson->tags as $tag)
+    <li>{{ $tag->name }}</li>
+  @endforeach
+</ul>

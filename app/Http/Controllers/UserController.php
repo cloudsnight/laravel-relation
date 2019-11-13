@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Passport;
 use App\Models\Lesson;
+use App\Models\Forum;
 
 class UserController extends Controller
 {
@@ -22,5 +23,10 @@ class UserController extends Controller
     public function showLesson($id)
     {
         return view('user.lesson', ['lesson' => Lesson::findOrFail($id)]);
+    }
+
+    public function showForum($id)
+    {
+        return view('user.forum', ['forum' => Forum::findOrFail($id)]);
     }
 }

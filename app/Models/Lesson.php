@@ -19,4 +19,10 @@ class Lesson extends Model
     {
       return $this->morphMany('App\Models\Like', 'likeable');
     }
+
+    // Polymorphic Many2Many
+    public function tags()
+    {
+      return $this->MorphToMany('App\Models\Tag', 'taggable');
+    }
 }
