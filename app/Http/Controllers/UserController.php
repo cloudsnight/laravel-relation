@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Passport;
 use App\Models\Lesson;
 use App\Models\Forum;
+use App\Models\City;
 
 class UserController extends Controller
 {
@@ -24,6 +25,9 @@ class UserController extends Controller
 
          // Eager loading dengan tabel lebih dari satu :
          // $user = User::with('forums', 'lessons')->where('id', $id)->first();
+
+        //  hasManyThrough
+        //  dd(City::find($id)->forums);
 
          // Nested eager loading :
          $user = User::with('forums.tags')->where('id', $id)->first();
