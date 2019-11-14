@@ -27,8 +27,9 @@ class UserController extends Controller
 
          // Nested eager loading :
          $user = User::with('forums.tags')->where('id', $id)->first();
+         $userForumCount = User::withCount('forums')->get();
       
-         return view('user.profile', ['user' => $user]);
+         return view('user.profile', ['user' => $user, 'userForumCount' => $userForumCount]);
     }
 
     public function showPassport($id)
