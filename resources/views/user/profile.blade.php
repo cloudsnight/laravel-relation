@@ -12,7 +12,7 @@
 
 <ul>
   @foreach($user->forums as $forum)
-    <li>{{ $forum->title }}
+    <li>Nama Forum : {{ $forum->title }}
       {{-- Nested eager loading --}}
       || Tag : 
       @foreach($forum->tags as $tag)
