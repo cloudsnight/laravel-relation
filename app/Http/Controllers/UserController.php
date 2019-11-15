@@ -147,4 +147,15 @@ class UserController extends Controller
 
     // -----------------------------------------------------------------
     // ----------------------------------------------------------------- end case
+
+
+    // --- Edit child dan parent waktu --- //
+    public function editPassport()
+    {
+        $passport = Passport::find(1);
+        $passport->no_pass = '13jhkl12h5';
+        $passport->save();
+    }
+
+    // ----------------------------------- //
 }
