@@ -21,6 +21,9 @@ Route::get('passport/{id}', 'UserController@showPassport');
 // insert relation on many to many relationship
 Route::get('lesson/create', 'UserController@createLesson');
 Route::get('lesson/delete', 'UserController@deleteLesson');
+// update and sync
+Route::get('lesson/update', 'UserController@updateLesson');
+Route::get('lesson/sync', 'UserController@syncLesson');
 
 Route::get('lesson/{id}', 'UserController@showLesson');
 

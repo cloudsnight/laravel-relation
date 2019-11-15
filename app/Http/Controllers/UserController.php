@@ -122,6 +122,29 @@ class UserController extends Controller
         $user->lessons()->detach(3);
     }
 
+    // update existin pivot on lesson_user table
+    public function updateLesson()
+    {
+        // tahap 1 : cari user id 1 pada table lesson_user
+        $user = User::find(1);
+        // tahap 2 : membuat atribut untuk mengganti nilai dari kolom
+        $attributes = [
+            'data_lain' => 'coto'
+        ];
+        // tahap 3 : eksekusi tuk update dengan keterangan lesson_id yang ke 1
+        $user->lessons()->updateExistingPivot(1, $attributes);
+    }
+
+    public function syncLesson()
+    {
+        // tahap 1 : cari user id 1
+        $user = User::find(1);
+        // tahap 2 : membuat list data mana yg harus tetap ada
+        $lists = [1,2];
+        // tahap 3 : eksekusi sync
+        $user->lessons()->sync($lists);
+    }
+
     // -----------------------------------------------------------------
     // ----------------------------------------------------------------- end case
 }
