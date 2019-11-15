@@ -51,6 +51,9 @@ class UserController extends Controller
         return view('user.forum', ['forum' => Forum::findOrFail($id)]);
     }
 
+
+    // -- kasus dibawah ini hanya berlaku pada relasi belongsTo ----------------------------
+    // ------------------------------------------------------------------------------
     public function createForum()
     {
         // insert relation dengan metode save()
@@ -72,4 +75,30 @@ class UserController extends Controller
             'body' => 'body test forum terbaru dengan metode create'
         ]);
     }
+
+    public function updateForum()
+    {
+        // tahap 1 : cari di table forums dengan id 4
+        $forum = Forum::find(4);
+        // tahap 2 : User_id diubah menjadi id 3
+        $user = User::find(3);
+        // tahap 3 : eksekusi
+        $forum->user()->associate($user);
+        $forum->save();
+    }
+
+    public function deleteForum()
+    {
+        // metode delete ini hanya mendelete user_id dalam tabel forums. Tidak mendelete kena satu row dari tabel forum.
+
+        // tahap 1 : cari id 3 di tabel forums
+        $forum = Forum::find(3);
+
+        // tahap 2 : eksekusi
+        $forum->user()->dissociate();
+        $forum->save();
+    }
+
+    // -----------------------------------------------------------------
+    // ----------------------------------------------------------------- end case
 }
