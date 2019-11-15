@@ -53,7 +53,7 @@ class UserController extends Controller
 
 
     // -- kasus dibawah ini hanya berlaku pada relasi belongsTo ----------------------------
-    // ------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------
     public function createForum()
     {
         // insert relation dengan metode save()
@@ -97,6 +97,29 @@ class UserController extends Controller
         // tahap 2 : eksekusi
         $forum->user()->dissociate();
         $forum->save();
+    }
+
+    // -----------------------------------------------------------------
+    // ----------------------------------------------------------------- end case
+
+
+    // -- kasus dibawah ini hanya berlaku pada relasi many to many ----------------------------
+    // -------------------------------------------------------------------------------------
+
+    public function createLesson()
+    {
+        // tahap 1 : ambil id user ke 1
+        $user = User::find(1);
+        // tahap 2 : eksekusi dengan menambahkan id 3 pada tabel lesson_user
+        $user->lessons()->attach(3);
+    }
+
+    public function deleteLesson()
+    {
+        // tahap 1 : ambil id user ke 1
+        $user = User::find(1);
+        // tahap 2 : eksekusi dengan menghapus id 3 pada tabel lesson_user
+        $user->lessons()->detach(3);
     }
 
     // -----------------------------------------------------------------
